@@ -27,8 +27,8 @@
 <script src="quagga.js"></script>
 <script>
     $("#linterna").click(function () {
-        $("#mensajes").empty();
-        $("#mensajes").append("<li>Encendiendo Linterna</li>");
+        // $("#mensajes").empty();
+        $("#mensajes").append("<li>Click sobre boton</li>");
         if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
                 $("#mensajes").append(`
                 <li>Estado de la linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
