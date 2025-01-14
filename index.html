@@ -18,7 +18,7 @@
 
 <body>
 <div id="camera" style="width:100%"></div>
-<button id="linterna">Encender Linterna</button>
+<button id="linterna">Apagar la Linterna</button>
 
 <div>
     <h3>Mensajes</h3>
@@ -26,33 +26,29 @@
 </div>
 <script src="quagga.js"></script>
 <script>
-    $("#linterna").click(function () {
+    function interruptorLinterna() {
         // $("#mensajes").empty();
         $("#mensajes").append("<li>Click sobre boton</li>");
-        if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
-                $("#mensajes").append(`
-                <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
-                <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().torch}</li>
-                `);
-                
-                if(Quagga.CameraAccess.getActiveTrack().getConstraints().torch === "off"){
-                    $("#mensajes").append("<li>La linterna esta apagada</li>");
-                    Quagga.CameraAccess.getActiveTrack().applyConstraints({
-                        advanced: [{torch: true}]}
-                    );
-                    $("#linterna").text("Apagar Linterna");
-                }else{
-                    Quagga.CameraAccess.getActiveTrack().applyConstraints({
-                        advanced: [{torch: false}]
-                    });
-                    $("#mensajes").append("<li>La linterna esta apagada</li>");
-                    $("#linterna").text("Encender Linterna");
-                }
-            }else{
-                $("#linterna").prop("disabled", true);
-                alert("No se puede encender la linterna");
-            }
-    })
+        $("#mensajes").append(`
+        <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
+        <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().torch}</li>
+        `);
+        
+        if(Quagga.CameraAccess.getActiveTrack().getConstraints().torch === "off"){
+            $("#mensajes").append("<li>La linterna esta apagada</li>");
+            Quagga.CameraAccess.getActiveTrack().applyConstraints({
+                advanced: [{torch: true}]}
+            );
+            $("#linterna").text("Apagar Linterna");
+        }else{
+            Quagga.CameraAccess.getActiveTrack().applyConstraints({
+                advanced: [{torch: false}]
+            });
+            $("#mensajes").append("<li>La linterna esta apagada</li>");
+            $("#linterna").text("Encender Linterna");
+        }
+    }
+
     const quaggaConf = {
         inputStream: {
             target: document.querySelector("#camera"),
@@ -74,6 +70,14 @@
             return console.log(err);
         }
         Quagga.start();
+        if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
+            Quaggas.CameraAccess.getActiveTrack().applyConstraints({
+                advanced: [{torch: true}]
+            });
+            $("#linterna").click(interruptorLinterna);
+        }else{
+            $("#linterna").prop("disabled", true);
+        }
     });
 
     Quagga.onDetected(function (result) {
