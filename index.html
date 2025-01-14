@@ -71,7 +71,7 @@
         }
         Quagga.start();
         if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
-            Quaggas.CameraAccess.getActiveTrack().applyConstraints({
+            Quagga.CameraAccess.getActiveTrack().applyConstraints({
                 advanced: [{torch: true}]
             });
             $("#mensajes").append(`
