@@ -33,9 +33,10 @@
             if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
                 if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch.mode === "off"){
                     $("#mensajes").append("<li>La linterna esta apagada</li>");
-                    Quagga.CameraAccess.getActiveTrack().applyConstraints({
-                        advanced: [{torch: true}]
-                    });
+                    Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]});
+
+                    Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]})
+                    
                     $("#linterna").text("Apagar Linterna");
                 }else{
                     Quagga.CameraAccess.getActiveTrack().applyConstraints({
@@ -49,7 +50,7 @@
                 alert("No se puede encender la linterna");
             }
         } catch (error) {
-            console.log(error);
+            $("#mensajes").append("<li>Error: "+error+"</li>");
         }
     })
     const quaggaConf = {
