@@ -24,8 +24,19 @@
     $("#linterna").click(function () {
         try {
             if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
-                Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]});
+                if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch.mode === "off"){
+                    Quagga.CameraAccess.getActiveTrack().applyConstraints({
+                        advanced: [{torch: true}]
+                    });
+                    $("#linterna").text("Apagar Linterna");
+                }else{
+                    Quagga.CameraAccess.getActiveTrack().applyConstraints({
+                        advanced: [{torch: false}]
+                    });
+                    $("#linterna").text("Encender Linterna");
+                }
             }else{
+                $("#linterna").prop("disabled", true);
                 alert("No se puede encender la linterna");
             }
         } catch (error) {
