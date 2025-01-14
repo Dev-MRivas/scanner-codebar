@@ -89,7 +89,10 @@
     });
 
     Quagga.onDetected(function (result) {
-        alert("Detected barcode: " + result.codeResult.code);
+        $("mensajes").empty();
+        $("#mensajes").append(`
+        <li>Codigo detectado: ${result.codeResult.code}</li>
+        `);
     });
 </script>
 </body>
