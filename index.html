@@ -30,17 +30,15 @@
         $("#mensajes").empty();
         $("#mensajes").append("<li>Encendiendo Linterna</li>");
         if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
-                Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]});
                 $("#mensajes").append(`
                 <li>Estado de la linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
                 `);
                 
                 if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch === "off"){
                     $("#mensajes").append("<li>La linterna esta apagada</li>");
-                    Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]});
-
-                    Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]})
-                    
+                    Quagga.CameraAccess.getActiveTrack().applyConstraints({
+                        advanced: [{torch: true}]}
+                    );
                     $("#linterna").text("Apagar Linterna");
                 }else{
                     Quagga.CameraAccess.getActiveTrack().applyConstraints({
