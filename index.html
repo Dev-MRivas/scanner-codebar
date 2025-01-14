@@ -32,7 +32,7 @@
         if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
                 Quagga.CameraAccess.getActiveTrack().applyConstraints({advanced: [{torch: true}]});
                 $("#mensajes").append(`
-                <li>Estado de la linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch.mode}</li>
+                <li>Estado de la linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
                 `);
                 
                 // if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch.mode === "off"){
