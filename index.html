@@ -36,17 +36,17 @@
         `);
         
         if(Quagga.CameraAccess.getActiveTrack().getConstraints().advanced[0].torch){
-            $("#mensajes").append("<li>La linterna esta apagada</li>");
+            $("#mensajes").append("<li>La linterna estaba encendida</li>");
             Quagga.CameraAccess.getActiveTrack().applyConstraints({
-                advanced: [{torch: true}]}
+                advanced: [{torch: false}]}
             );
-            $("#linterna").text("Apagar Linterna");
+            $("#linterna").text("Encender Linterna");
         }else{
             Quagga.CameraAccess.getActiveTrack().applyConstraints({
-                advanced: [{torch: false}]
+                advanced: [{torch: true}]
             });
-            $("#mensajes").append("<li>La linterna esta apagada</li>");
-            $("#linterna").text("Encender Linterna");
+            $("#mensajes").append("<li>La linterna estaba apagada</li>");
+            $("#linterna").text("Apagar Linterna");
         }
     }
 
