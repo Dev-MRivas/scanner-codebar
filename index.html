@@ -31,10 +31,11 @@
         $("#mensajes").append("<li>Click sobre boton</li>");
         if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
                 $("#mensajes").append(`
-                <li>Estado de la linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
+                <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
+                <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().torch}</li>
                 `);
                 
-                if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch === "off"){
+                if(Quagga.CameraAccess.getActiveTrack().getConstraints().torch === "off"){
                     $("#mensajes").append("<li>La linterna esta apagada</li>");
                     Quagga.CameraAccess.getActiveTrack().applyConstraints({
                         advanced: [{torch: true}]}
