@@ -35,7 +35,7 @@
         <li>Estado2: ${Quagga.CameraAccess.getActiveTrack().getConstraints().advanced[0].torch }</li>
         `);
         
-        if(Quagga.CameraAccess.getActiveTrack().getConstraints().torch === "off"){
+        if(Quagga.CameraAccess.getActiveTrack().getConstraints().advanced[0].torch){
             $("#mensajes").append("<li>La linterna esta apagada</li>");
             Quagga.CameraAccess.getActiveTrack().applyConstraints({
                 advanced: [{torch: true}]}
