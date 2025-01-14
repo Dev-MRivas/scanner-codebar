@@ -71,11 +71,18 @@
         }
         Quagga.start();
         if(Quagga.CameraAccess.getActiveTrack().getCapabilities().torch){
+            $("#mensajes").append(`
+                <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
+                <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().torch}</li>
+            `);
             Quaggas.CameraAccess.getActiveTrack().applyConstraints({
                 advanced: [{torch: true}]
             });
             $("#linterna").click(interruptorLinterna);
         }else{
+            $("#mensajes").append(`
+                <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
+            `);
             $("#linterna").prop("disabled", true);
         }
     });
