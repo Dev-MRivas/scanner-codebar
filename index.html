@@ -31,7 +31,7 @@
         $("#mensajes").append("<li>Click sobre boton</li>");
         $("#mensajes").append(`
         <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
-        <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().torch}</li>
+        <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints()}</li>
         `);
         
         if(Quagga.CameraAccess.getActiveTrack().getConstraints().torch === "off"){
