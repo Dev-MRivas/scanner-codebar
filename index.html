@@ -9,6 +9,9 @@
             width:100%;
             max-width: 640px;
         }
+        #camera .drawingBuffer {
+            display: none;
+        }
     </style>
     <script
     src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -19,7 +22,7 @@
 <body>
 <div id="camera" style="width:100%"></div>
 <button id="linterna">Apagar la Linterna</button>
-
+<input type="text" id="codigo">
 <div>
     <h3>Mensajes</h3>
     <ul id="mensajes"></ul>
@@ -89,7 +92,7 @@
     });
 
     Quagga.onDetected(function (result) {
-        $("mensajes").empty();
+        $("#mensajes").empty();
         $("#mensajes").append(`
         <li>Codigo detectado: ${result.codeResult.code}</li>
         `);
