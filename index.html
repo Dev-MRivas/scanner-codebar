@@ -32,6 +32,7 @@
     function interruptorLinterna() {
         // $("#mensajes").empty();
         $("#mensajes").append("<li>Click sobre boton</li>");
+        alert(JSON.stringify(Quagga.CameraAccess.getActiveTrack().getConstraints()));
         $("#mensajes").append(`
         <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
         <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().advanced}</li>
