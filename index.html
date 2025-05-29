@@ -35,7 +35,7 @@
         alert(JSON.stringify(Quagga.CameraAccess.getActiveTrack().getConstraints()));
         $("#mensajes").append(`
         <li>Tiene linterna: ${Quagga.CameraAccess.getActiveTrack().getCapabilities().torch}</li>
-        <li>Estado: ${Quagga.CameraAccess.getActiveTrack().getConstraints().advanced}</li>
+        <li>Estado: ${JSON.strigify(Quagga.CameraAccess.getActiveTrack().getConstraints().advanced)}</li>
         <li>Estado2: ${Quagga.CameraAccess.getActiveTrack().getConstraints().advanced[0].torch }</li>
         `);
         
